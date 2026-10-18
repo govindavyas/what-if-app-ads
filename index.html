@@ -4,35 +4,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b1020">
+  <meta name="theme-color" content="#080b18">
 
-  <title>WHAT IF...? Explore Impossible</title>
-  <meta name="description" content="Explore impossible scenarios, challenge your imagination, and discover fascinating answers with WHAT IF...? Explore Impossible.">
+  <title>WHAT IF...? Explore Impossible | ChronoIT</title>
+  <meta name="description" content="What if anything were possible? Explore extraordinary hypothetical scenarios and expand your imagination with WHAT IF...? Explore Impossible.">
   <meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #0b1020;
-      --surface: #141c30;
-      --text: #f4f7ff;
-      --muted: #a9b5cc;
-      --accent: #8b7cff;
-      --border: #29334b;
+      --bg: #080b18;
+      --surface: #11162a;
+      --text: #f5f6ff;
+      --muted: #9ca8c4;
+      --accent: #a78bfa;
+      --cyan: #67e8f9;
+      --border: rgba(255,255,255,.10);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      background:
-        radial-gradient(ellipse at top, #20234a 0%, var(--bg) 55%);
+      background: var(--bg);
       color: var(--text);
+      font-family: "DM Sans", sans-serif;
       line-height: 1.7;
+      overflow-x: hidden;
     }
 
     a {
@@ -40,172 +48,465 @@
     }
 
     .container {
-      width: min(1080px, 90%);
-      margin: auto;
+      width: min(1120px, 90%);
+      margin-inline: auto;
     }
 
-    header {
-      padding: 24px 0;
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8,11,24,.86);
+      backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border);
     }
 
-    nav {
+    .nav-inner {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
     }
 
-    .brand {
+    .logo {
+      font-family: "Space Grotesk", sans-serif;
       font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
+      font-weight: 700;
+      letter-spacing: -.6px;
+      text-decoration: none;
     }
 
-    .brand span {
+    .logo span {
       color: var(--accent);
     }
 
-    .nav-link {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
       text-decoration: none;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: .9rem;
+      transition: color .2s ease;
     }
 
-    .hero {
-      text-align: center;
-      padding: 100px 0 85px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      padding: 6px 14px;
-      border: 1px solid #48416f;
-      border-radius: 50px;
-      color: #c4bbff;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      line-height: 1.1;
-      letter-spacing: -2px;
-      margin: 24px 0;
-    }
-
-    h1 span {
-      color: var(--accent);
-    }
-
-    .hero p {
-      max-width: 650px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 1.1rem;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 13px 24px;
-      background: var(--accent);
+    .nav-links a:hover {
       color: white;
-      border-radius: 10px;
-      text-decoration: none;
+    }
+
+    .nav-links .nav-cta {
+      color: #0b0b18;
+      background: var(--text);
+      padding: 10px 17px;
+      border-radius: 9px;
       font-weight: 700;
     }
 
-    section {
-      padding: 55px 0;
-    }
-
-    .section-heading {
+    .hero {
+      position: relative;
+      isolation: isolate;
+      padding: 110px 0 100px;
       text-align: center;
-      margin-bottom: 32px;
     }
 
-    .section-heading h2 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      margin-bottom: 8px;
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: .18;
+      pointer-events: none;
     }
 
-    .section-heading p {
+    .hero::before {
+      background: #7955ff;
+      top: 20px;
+      left: -220px;
+    }
+
+    .hero::after {
+      background: #0e9bc8;
+      right: -230px;
+      top: 150px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 14px;
+      border: 1px solid rgba(167,139,250,.3);
+      background: rgba(167,139,250,.08);
+      color: #d4c6ff;
+      border-radius: 100px;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: #6ee7b7;
+      border-radius: 50%;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1, h2, h3 {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 28px auto 22px;
+      font-size: clamp(2.8rem, 7.5vw, 6rem);
+      line-height: 1.04;
+      letter-spacing: -4px;
+      font-weight: 700;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #c4b5fd, #8b9dff 50%, #67e8f9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 22px;
+      border-radius: 11px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .95rem;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: #f4f3ff;
+      color: #111126;
+    }
+
+    .button-primary:hover {
+      background: #ddd6fe;
+    }
+
+    .button-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero-note {
+      margin-top: 17px;
+      font-size: .82rem;
+      color: #7f8aa6;
+    }
+
+    .visual {
+      max-width: 780px;
+      margin: 75px auto 0;
+      padding: 26px;
+      border: 1px solid rgba(167,139,250,.2);
+      border-radius: 24px;
+      background:
+        radial-gradient(ellipse at center, rgba(104,83,190,.16), transparent 70%),
+        #0d1225;
+      box-shadow: 0 35px 100px rgba(0,0,0,.3);
+    }
+
+    .visual-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .window-dots i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #6b7591;
+    }
+
+    .question-card {
+      padding: 46px 12px;
+      text-align: center;
+    }
+
+    .question-icon {
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(167,139,250,.3);
+      background: rgba(167,139,250,.1);
+      color: #c4b5fd;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+
+    .question-card h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .question-card p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    section.content-section {
+      padding: 85px 0;
+    }
+
+    .section-header {
+      max-width: 660px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .section-label {
+      color: var(--cyan);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    .section-header h2 {
+      margin: 13px 0;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+    }
+
+    .section-header p,
+    .feature p,
+    .about p {
       color: var(--muted);
     }
 
     .features {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
     }
 
     .feature {
-      background: var(--surface);
+      padding: 27px;
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 26px;
+      border-radius: 17px;
+      background: linear-gradient(145deg, #12182c, #0d1222);
     }
 
-    .feature .icon {
-      font-size: 1.8rem;
+    .feature-icon {
+      width: 49px;
+      height: 49px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(167,139,250,.2);
+      border-radius: 13px;
+      background: rgba(167,139,250,.09);
+      font-size: 1.4rem;
     }
 
     .feature h3 {
-      margin: 14px 0 8px;
+      margin: 20px 0 9px;
+      font-size: 1.15rem;
     }
 
     .feature p {
-      color: var(--muted);
-      font-size: 0.95rem;
       margin-bottom: 0;
+      font-size: .94rem;
     }
 
     .about {
-      max-width: 760px;
-      margin: auto;
+      padding: 45px 30px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background:
+        radial-gradient(ellipse at top right, rgba(103,232,249,.06), transparent 60%),
+        var(--surface);
       text-align: center;
-      color: var(--muted);
     }
 
     .about h2 {
-      color: var(--text);
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      letter-spacing: -1px;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .final-cta {
+      text-align: center;
+      padding: 75px 0 100px;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -1.5px;
+      margin-bottom: 12px;
+    }
+
+    .final-cta p {
+      color: var(--muted);
     }
 
     footer {
-      margin-top: 40px;
-      padding: 30px 0;
       border-top: 1px solid var(--border);
-      text-align: center;
+      padding: 30px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      color: #77829d;
+      font-size: .83rem;
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links a {
       color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: #c4bbff;
-      margin: 0 10px;
       text-decoration: none;
+      font-size: .85rem;
     }
 
-    @media (max-width: 700px) {
+    .footer-links a:hover {
+      color: white;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .nav-links {
+        gap: 13px;
+      }
+
+      .nav-links .nav-cta {
+        padding: 9px 12px;
+        font-size: .8rem;
+      }
+
+      .nav-links a:not(.nav-cta) {
+        display: none;
+      }
+
       .hero {
-        padding: 70px 0 55px;
+        padding: 78px 0 55px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .visual {
+        margin-top: 48px;
+        padding: 17px;
+        border-radius: 18px;
+      }
+
+      .question-card {
+        padding: 35px 5px;
+      }
+
+      section.content-section {
+        padding: 60px 0;
       }
 
       .features {
         grid-template-columns: 1fr;
       }
 
-      h1 {
-        letter-spacing: -1px;
+      .feature {
+        padding: 24px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
       *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation: none !important;
         transition: none !important;
       }
     }
@@ -213,92 +514,193 @@
 </head>
 
 <body>
-  <header>
-    <nav class="container" aria-label="Main navigation">
-      <div class="brand">WHAT IF<span>...?</span></div>
-      <a class="nav-link" href="#about">About the app</a>
+  <header class="navbar">
+    <nav class="container nav-inner" aria-label="Main navigation">
+      <a class="logo" href="#" aria-label="WHAT IF home">
+        WHAT IF<span>...?</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#features">Discover</a>
+        <a href="#about">About</a>
+        <a
+          class="nav-cta"
+          href="https://play.google.com/store/apps/details?id=com.chronoit.whatif"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Get the App ↗</a>
+      </div>
     </nav>
   </header>
 
   <main>
     <section class="hero">
       <div class="container">
-        <span class="eyebrow">Imagine Beyond Limits</span>
+        <span class="eyebrow">
+          <span class="status-dot"></span>
+          Your imagination has no limits
+        </span>
 
-        <h1>What if the <span>impossible</span><br>became possible?</h1>
+        <h1>
+          One question.<br>
+          <span class="gradient-text">Infinite possibilities.</span>
+        </h1>
 
-        <p>
-          Explore extraordinary hypothetical scenarios, challenge
-          your imagination, and discover fascinating possibilities
-          with WHAT IF...? Explore Impossible.
+        <p class="hero-description">
+          What if the impossible became reality? Explore extraordinary
+          hypothetical scenarios, challenge your perspective, and
+          let curiosity take you somewhere unexpected.
         </p>
 
-        <!-- Replace # with your actual Google Play Store URL -->
-        <a class="button" href="#" id="play-store-link">
-          Explore the App
-        </a>
+        <div class="actions">
+          <a
+            class="button button-primary"
+            href="https://play.google.com/store/apps/details?id=com.chronoit.whatif"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg width="19" height="19" viewBox="0 0 24 24"
+                 fill="none" aria-hidden="true">
+              <path d="M4 3.5L14 12 4 20.5V3.5Z"
+                    fill="#34A853"/>
+              <path d="M14 12L17.5 9L21 11C22 11.6 22 12.4 21 13L17.5 15L14 12Z"
+                    fill="#4285F4"/>
+              <path d="M4 3.5L17.5 9L14 12L4 3.5Z"
+                    fill="#FBBC04"/>
+              <path d="M4 20.5L14 12L17.5 15L4 20.5Z"
+                    fill="#EA4335"/>
+            </svg>
+            Get it on Google Play
+          </a>
+
+          <a class="button button-secondary" href="#features">
+            Discover the experience ↓
+          </a>
+        </div>
+
+        <p class="hero-note">
+          Available on Android · Download from Google Play
+        </p>
+
+        <div class="visual" aria-label="Illustration of a hypothetical question">
+          <div class="visual-top">
+            <div class="window-dots" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </div>
+            <span>IMAGINATION ENGINE</span>
+            <span>01 / ∞</span>
+          </div>
+
+          <div class="question-card">
+            <div class="question-icon" aria-hidden="true">?</div>
+            <h2>What if there were no limits?</h2>
+            <p>
+              Every extraordinary discovery begins with an extraordinary question.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section aria-labelledby="features-heading">
+    <section class="content-section" id="features">
       <div class="container">
-        <div class="section-heading">
-          <h2 id="features-heading">Explore the Possibilities</h2>
-          <p>Curiosity starts with one simple question: What if?</p>
+        <div class="section-header">
+          <span class="section-label">Explore beyond ordinary</span>
+          <h2>Curiosity is just the beginning.</h2>
+          <p>
+            Step beyond familiar thinking and explore a world
+            of fascinating possibilities.
+          </p>
         </div>
 
         <div class="features">
           <article class="feature">
-            <div class="icon" aria-hidden="true">🌌</div>
-            <h3>Imagine Anything</h3>
+            <div class="feature-icon" aria-hidden="true">✦</div>
+            <h3>Imagine the Impossible</h3>
             <p>
-              Discover thought-provoking hypothetical scenarios
-              that push the boundaries of ordinary thinking.
+              Explore unusual hypothetical situations and questions
+              that stretch the boundaries of your imagination.
             </p>
           </article>
 
           <article class="feature">
-            <div class="icon" aria-hidden="true">🧠</div>
-            <h3>Challenge Your Mind</h3>
+            <div class="feature-icon" aria-hidden="true">◎</div>
+            <h3>Think Differently</h3>
             <p>
-              Think through unusual possibilities and explore
-              different perspectives on the world around you.
+              Challenge everyday assumptions and discover new
+              perspectives on familiar ideas.
             </p>
           </article>
 
           <article class="feature">
-            <div class="icon" aria-hidden="true">🚀</div>
-            <h3>Discover Something New</h3>
+            <div class="feature-icon" aria-hidden="true">↗</div>
+            <h3>Follow Your Curiosity</h3>
             <p>
-              Turn everyday curiosity into an opportunity
-              to learn, wonder, and explore.
+              Turn a simple question into an opportunity
+              to wonder, explore, and learn something new.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="about">
-      <div class="container about">
-        <h2>About WHAT IF...? Explore Impossible</h2>
+    <section class="content-section" id="about">
+      <div class="container">
+        <div class="about">
+          <span class="section-label">About the application</span>
+          <h2>Meet WHAT IF...? Explore Impossible</h2>
+          <p>
+            WHAT IF...? Explore Impossible is an Android application
+            created for curious minds. It invites you to consider
+            extraordinary questions, explore hypothetical scenarios,
+            and discover ideas beyond the ordinary.
+          </p>
+
+          <div class="actions">
+            <a
+              class="button button-primary"
+              href="https://play.google.com/store/apps/details?id=com.chronoit.whatif"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Explore on Google Play ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <span class="section-label">Your next question awaits</span>
+        <h2>So... what if?</h2>
         <p>
-          WHAT IF...? Explore Impossible is an application
-          built for curious minds. It invites users to consider
-          unusual questions, explore hypothetical situations,
-          and discover interesting ideas beyond everyday experience.
+          Start exploring possibilities with WHAT IF...? Explore Impossible.
         </p>
+
+        <a
+          class="button button-primary"
+          href="https://play.google.com/store/apps/details?id=com.chronoit.whatif"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Get the App on Google Play ↗</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <p>© <span id="year"></span> WHAT IF...? Explore Impossible</p>
+    <div class="container footer-inner">
+      <p class="footer-copy">
+        © <span id="year"></span> WHAT IF...? Explore Impossible
+      </p>
 
-      <p>
+      <div class="footer-links">
         <a href="privacy.html">Privacy Policy</a>
         <a href="mailto:chronoitofficial@gmail.com">Contact</a>
-      </p>
+        <a
+          href="https://play.google.com/store/apps/details?id=com.chronoit.whatif"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Google Play</a>
+      </div>
     </div>
   </footer>
 
