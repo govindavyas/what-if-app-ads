@@ -1,6 +1,311 @@
-<html>
-  <head><title>What If Ads</title></head>
-  <body>
-    What if ads page
-  </body>
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+
+  <title>WHAT IF...? Explore Impossible</title>
+  <meta name="description" content="Explore impossible scenarios, challenge your imagination, and discover fascinating answers with WHAT IF...? Explore Impossible.">
+  <meta name="robots" content="index, follow">
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1020;
+      --surface: #141c30;
+      --text: #f4f7ff;
+      --muted: #a9b5cc;
+      --accent: #8b7cff;
+      --border: #29334b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(ellipse at top, #20234a 0%, var(--bg) 55%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1080px, 90%);
+      margin: auto;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 0 85px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid #48416f;
+      border-radius: 50px;
+      color: #c4bbff;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin: 24px 0;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 13px 24px;
+      background: var(--accent);
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 55px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .feature {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+    }
+
+    .feature .icon {
+      font-size: 1.8rem;
+    }
+
+    .feature h3 {
+      margin: 14px 0 8px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .about {
+      max-width: 760px;
+      margin: auto;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .about h2 {
+      color: var(--text);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #c4bbff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        padding: 70px 0 55px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <div class="brand">WHAT IF<span>...?</span></div>
+      <a class="nav-link" href="#about">About the app</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Imagine Beyond Limits</span>
+
+        <h1>What if the <span>impossible</span><br>became possible?</h1>
+
+        <p>
+          Explore extraordinary hypothetical scenarios, challenge
+          your imagination, and discover fascinating possibilities
+          with WHAT IF...? Explore Impossible.
+        </p>
+
+        <!-- Replace # with your actual Google Play Store URL -->
+        <a class="button" href="#" id="play-store-link">
+          Explore the App
+        </a>
+      </div>
+    </section>
+
+    <section aria-labelledby="features-heading">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="features-heading">Explore the Possibilities</h2>
+          <p>Curiosity starts with one simple question: What if?</p>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <div class="icon" aria-hidden="true">🌌</div>
+            <h3>Imagine Anything</h3>
+            <p>
+              Discover thought-provoking hypothetical scenarios
+              that push the boundaries of ordinary thinking.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="icon" aria-hidden="true">🧠</div>
+            <h3>Challenge Your Mind</h3>
+            <p>
+              Think through unusual possibilities and explore
+              different perspectives on the world around you.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="icon" aria-hidden="true">🚀</div>
+            <h3>Discover Something New</h3>
+            <p>
+              Turn everyday curiosity into an opportunity
+              to learn, wonder, and explore.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about">
+        <h2>About WHAT IF...? Explore Impossible</h2>
+        <p>
+          WHAT IF...? Explore Impossible is an application
+          built for curious minds. It invites users to consider
+          unusual questions, explore hypothetical situations,
+          and discover interesting ideas beyond everyday experience.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> WHAT IF...? Explore Impossible</p>
+
+      <p>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:chronoitofficial@gmail.com">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
 </html>
+```
